@@ -9,13 +9,22 @@
     "lint": "eslint whereismyhome-vue --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.2",
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
     "@tailwindcss/forms": "^0.5.7",
+    "@vueuse/core": "^10.6.1",
     "axios": "^1.6.1",
+    "highcharts": "^11.2.0",
+    "jwt-decode": "^4.0.0",
     "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.0",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "v-click-outside": "^3.2.0",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.5"
+    "vue-highcharts": "^0.2.0",
+    "vue-router": "^4.2.5",
+    "vue3-youtube": "^0.1.9"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.4.0",
@@ -23,6 +32,7 @@
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.17.0",
     "postcss": "^8.4.31",
+    "tailwind-scrollbar": "^3.0.5",
     "tailwindcss": "^3.3.5",
     "vite": "^4.4.11"
   }

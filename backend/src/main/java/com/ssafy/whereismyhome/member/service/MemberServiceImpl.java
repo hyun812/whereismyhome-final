@@ -1,8 +1,10 @@
 package com.ssafy.whereismyhome.member.service;
 
-import com.ssafy.whereismyhome.member.model.mapper.MemberMapper;
 import com.ssafy.whereismyhome.member.model.MemberDto;
 import com.ssafy.whereismyhome.member.model.SignUpMemberRequestDto;
+import com.ssafy.whereismyhome.member.model.mapper.MemberMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -11,6 +13,8 @@ import java.util.List;
 @Service
 public class MemberServiceImpl implements MemberService {
 
+    private static final Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
+
     private final MemberMapper memberMapper;
 
     public MemberServiceImpl(MemberMapper memberMapper) {
@@ -18,8 +22,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public MemberDto loginMember(String user_id, String password) throws SQLException {
-        return memberMapper.loginMember(user_id, password);
+    public MemberDto loginMember(String emailAccount, String emailDomain, String password) throws SQLException {
+        return memberMapper.loginMember(emailAccount, emailDomain, password);
     }
 
     @Override
@@ -33,8 +37,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public int deleteMemberByUserId(String user_id) throws SQLException {
-        return memberMapper.deleteMemberByUserId(user_id);
+    public int deleteMemberById(int memberId) throws SQLException {
+        return memberMapper.deleteMemberById(memberId);
     }
 
     @Override
@@ -43,8 +47,20 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public MemberDto getMemberByUserId(String user_id) throws SQLException {
-        return memberMapper.getMemberByUserId(user_id);
+    public MemberDto getMemberById(int memberId) throws SQLException {
+        return memberMapper.getMemberById(memberId);
+    }
+
+    @Override
+    public int updateRefreshToken(String memberId, String refreshToken) throws SQLException {
+        return memberMapper.updateRefreshToken(memberId, refreshToken);
+    }
+
+    @Override
+    public boolean checkEmailDuplicate(String emailAccount, String emailDomain) throws SQLException {
+        int cnt = memberMapper.checkEmailDuplicate(emailAccount, emailDomain);
+        logger.debug("checkEmailDuplicate: cnt: {}", cnt);
+        return cnt > 0;
     }
 
 }

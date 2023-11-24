@@ -3,6 +3,11 @@ import TheLoginView from '../views/TheLoginView.vue';
 import TheSignUpView from '../views/TheSignUpView.vue';
 import TheMainView from '../views/TheMainView.vue';
 import TheCommunityView from '../views/TheCommunityView.vue';
+import TheNoticeView from '../views/TheNoticeView.vue';
+import TheActualPriceView from '../views/TheActualPriceView.vue';
+import CommunityWrite from '../components/community/CommunityWrite.vue';
+import NoticeDetailItem from '../components/notice/NoticeDetailItem.vue';
+import TheMyPageView from '../views/TheMyPageView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,14 +28,34 @@ const router = createRouter({
       component: TheSignUpView,
     },
     {
-      path: '/mypage',
-      name: 'mypage',
-      component: TheLoginView,
+      path: '/notice',
+      name: 'notice',
+      component: TheNoticeView,
+    },
+    {
+      path: '/notice/:boardId',
+      name: 'notice-detail',
+      component: NoticeDetailItem,
     },
     {
       path: '/community',
       name: 'community',
       component: TheCommunityView,
+    },
+    {
+      path: '/community/write',
+      name: 'community-write',
+      component: CommunityWrite,
+    },
+    {
+      path: '/actualprice',
+      name: 'actualprice',
+      component: TheActualPriceView,
+    },
+    {
+      path: '/mypage',
+      name: 'mypage',
+      component: TheMyPageView,
     },
   ],
 });

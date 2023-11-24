@@ -10,16 +10,19 @@ import java.util.List;
 @Mapper
 public interface MemberMapper {
 
-    MemberDto loginMember(String user_id, String password) throws SQLException;
+    MemberDto loginMember(String emailAccount, String emailDomain, String password) throws SQLException;
 
     int signUpMember(SignUpMemberRequestDto memberDto) throws SQLException;
 
     int updateMember(MemberDto memberDto) throws SQLException;
 
-    int deleteMemberByUserId(String user_id) throws SQLException;
+    int deleteMemberById(int memberId) throws SQLException;
 
     List<MemberDto> getMembers() throws SQLException;
 
-    MemberDto getMemberByUserId(String user_id) throws SQLException;
+    MemberDto getMemberById(int memberId) throws SQLException;
 
+    int updateRefreshToken(String memberId, String refreshToken) throws SQLException;
+
+    int checkEmailDuplicate(String emailAccount, String emailDomain) throws SQLException;
 }
